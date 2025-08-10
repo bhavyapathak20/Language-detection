@@ -25,7 +25,6 @@ def run_all_providers(audio_file_path: str):
         lang_code = None
         error_message = None
 
-        # Capture print output from connector
         buffer = io.StringIO()
         sys_stdout = sys.stdout
         sys.stdout = buffer
@@ -42,7 +41,6 @@ def run_all_providers(audio_file_path: str):
             printed_output = buffer.getvalue().strip()
             buffer.close()
 
-        # If no exception but something was printed, treat it as error message
         if printed_output and not error_message:
             error_message = printed_output
 

@@ -1,13 +1,10 @@
-# connectors/openai_connector.py
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Load API key from .env file
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# Create OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def detect_language_openai(audio_file_path: str):

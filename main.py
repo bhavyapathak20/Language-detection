@@ -2,30 +2,26 @@
 # from connectors.openAI_connector import detect_language_openai
 
 
-# # Path to your audio file
+# #audio file
 # audio_path = "Recording.mp3"  # or .mp3
 
-# # Run the function
+# #function
 # # language_code = detect_language_gemini(audio_path)
 # language_code = detect_language_openai(audio_path)
 
 # print(f"Detected language code: {language_code}")
 
-# main.py
-# main.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import os
 
-# Import from coordination/coordination.py
 from coordination.coordination import run_all_providers
 
 app = FastAPI()
 
-# Request model
 class LanguageDetectionRequest(BaseModel):
     audio_file_path: str
-    ground_truth_language: str  # for context only
+    ground_truth_language: str  #testing context
 
 @app.post("/detect/language")
 def detect_language(request: LanguageDetectionRequest):

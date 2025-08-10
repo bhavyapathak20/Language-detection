@@ -1,13 +1,10 @@
-# connectors/openai_connector.py
 import os
 from sarvamai import SarvamAI
 from dotenv import load_dotenv
 
-# Load API key from .env file
 load_dotenv()
 SARVAMAI_API_KEY = os.getenv("SARVAMAI_API_KEY")
 
-# Create OpenAI client
 client = SarvamAI(api_subscription_key=SARVAMAI_API_KEY)
 
 def detect_language_sarvamAI(audio_file_path: str):
@@ -16,7 +13,6 @@ def detect_language_sarvamAI(audio_file_path: str):
     Returns language code like 'en', 'hi', 'ta'.
     """
     try:
-        # Open the audio file
         with open(audio_file_path, "rb") as f:
             response = client.speech_to_text.transcribe(
                 file=f,
@@ -30,6 +26,6 @@ def detect_language_sarvamAI(audio_file_path: str):
         return None
     
 # if __name__ == "__main__":
-#     audio_file = "Recording.mp3"  # Replace with your actual file path
+#     audio_file = "Recording.mp3"
 #     lang_code = detect_language_sarvamAI(audio_file)
 #     print(f"Detected language code (Sarvam AI): {lang_code}")
